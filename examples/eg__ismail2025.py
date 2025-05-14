@@ -1,36 +1,49 @@
 """
+From Auditory Perception to Language Production: 
+Early Dynamics Predict Language Beta Lateralization Across Age
+==============================================================
 
-==============================================================
-From Auditory Perception to Language Production: Early Dynamics Predict Language Beta Lateralization Across Age
-==============================================================
+.. image:: https://github.com/griffithslab/whobpyt/raw/main/doc/_static/Ismail2025_Figure1.png
+   :alt: Ismail et al. 2025 Figure 1
+   :align: center
+   :width: 600px
+
+This example replicates the modeling pipeline described in Ismail et al. (2025) for a representative subject, 
+investigating the neurobiological mechanisms underlying language lateralization during childhood. 
+We construct individualized whole-brain structural connectomes using diffusion MRI–derived connectivity and 
+inter-regional distances computed from parcellated T1-weighted images. Subject-specific MEG data from 
+an auditory verb generation task are used to fit Jansen-Rit neural mass models. Bilateral stimulation of 
+the primary auditory cortices simulates auditory input, and model parameters are optimized to reproduce 
+early evoked responses (0–400 ms). We then evaluate whether these individualized models generalize to 
+later time windows (700–1200 ms), during which lateralized beta-band oscillations associated with language production are observed.
+
+Specifically, we:
+
+1. Load empirical MEG sensor data (early evoked responses for verb and noise trials)
+2. Fetch the subject’s structural connectivity and leadfield matrix
+3. Fit two whole-brain models for each subject to early auditory responses from each trial
+4. Simulate extended neural dynamics and assess beta-band activity from noun and noise models
+5. Compare simulated and empirical beta power changes between noun and noise trials in frontal language regions
+
+The results demonstrate that individualized models fit to early sensory responses
+can generalize to predict later lateralized beta-band activity, suggesting early
+auditory dynamics constrain later language production-related oscillations.
+
+Using these models, we aim to answer how a diffuse and highly plastic system transitions into 
+the physiologically efficient and specialized architecture of the adult brain, 
+using human language lateralization as a model system. 
+
+We show the brain transitions from local, broadly applied inhibition in early development to 
+precise, input-driven inhibition coordinated across hemispheres in adolescence. 
+
+**Reference**:  
+Ismail, M. et al. (2025). *Local Inhibition Gates Language Lateralization from Childhood to Adolescence*
+
 """
 # sphinx_gallery_thumbnail_number = 1
+
 # %% [markdown]
-# 0. Overview
-# ---------------------------------------------------
-#
-# This example replicates modelling in the Ismail et al. 2025 paper.
-# The code includes data fetching, model fitting, and result visualization based on the methods presented in the paper.
-
-# %%
-# Summary of paper
-# In this study, we explore the mechanisms underlying language lateralization in childhood 
-# using personalized whole-brain network models. Our findings reveal that interhemispheric inhibitory 
-# circuits play a crucial role in shaping lateralized language function, with local inhibition decreasing 
-# over development while interhemispheric inhibition increases. Using systematic model manipulations and virtual 
-# transplant experiments, we show that the reduction in local inhibition allows pre-existing asymmetries in interhemispheric 
-# inhibition to drive laterality. This work provides a developmental framework for understanding how inhibitory circuits shape language networks.
-
-#%%  [markdown]
-#.. image:: https://github.com/griffithslab/whobpyt/doc/_static/Ismail2025_Figure1.png
-#   :alt: Ismail et al. 2025 Figure 1
-#   :align: center
-
-#%%
-#This is Figure 1 from the paper, we will begin by replicating the results for one subject in this figure
-
-# %%  [markdown]
-# 1. Setup
+# 0. Setup
 # --------------------------------------------------
 # Imports:
 import numpy as np
