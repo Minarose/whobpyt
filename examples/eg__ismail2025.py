@@ -1,7 +1,7 @@
 """
 
 ==============================================================
-Replicating Ismail et al. 2025
+From Auditory Perception to Language Production: Early Dynamics Predict Language Beta Lateralization Across Age
 ==============================================================
 """
 # sphinx_gallery_thumbnail_number = 1
